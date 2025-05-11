@@ -8,6 +8,7 @@ import { palette } from './palette';
 import { shadows } from './shadows';
 import { typography } from './typography';
 import { customShadows } from './custom-shadows';
+import { componentsOverrides } from './overrides';
 // options
 
 // ----------------------------------------------------------------------
@@ -27,6 +28,8 @@ export default function ThemeProvider({ children }) {
   const memoizedValue = useMemo(() => baseOption, [baseOption]);
 
   const theme = createTheme(memoizedValue);
+
+  theme.components = componentsOverrides(theme);
 
   return (
     <MuiThemeProvider theme={theme}>
